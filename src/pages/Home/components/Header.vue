@@ -4,18 +4,26 @@
       <i class="iconfont">&#xe624;</i>
     </div>
     <div class="header-input"><i class="iconfont">&#xe632;</i>输入城市/景点/游戏主题</div>
-    <div class="header-right">城市<i class="iconfont">&#xe64a;</i></div>
+    <div class="header-right">{{city}}<i class="iconfont">&#xe64a;</i></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "HomeHeader"
+  name: "HomeHeader",
+  props: {
+    city: {
+      type: String,
+      default: '成都'
+    }
+  }
 }
 </script>
 
 <style scoped lang="scss">
   @import "../../../assets/styles/varibles";
+  @import "../../../assets/styles/mixin";
+
   .header{
     display: flex;
     line-height: .86rem;

@@ -1,8 +1,8 @@
 <template>
   <div class="icons">
     <swiper :options="swiperOption">
-      <swiper-slide class="swiper-item" v-for="(iconList,index) of pages" :key="index">
-        <div class="icon" v-for="item of iconList" :key="item.id">
+      <swiper-slide class="swiper-item" v-for="(page,index) of pages" :key="index">
+        <div class="icon" v-for="item of page" :key="item.id">
           <div class="icon-img">
             <img :src="item.imgUrl" alt="">
           </div>
@@ -16,61 +16,14 @@
 <script>
   export default {
     name: "HomeIcons",
+    props: {
+      iconList: Array
+    },
     data() {
       return {
-        swiperOption: {},
-        iconList: [
-          {
-            id: '0001',
-            imgUrl: require('../../../assets/images/nav/n1.png'),
-            desc: '景点门票'
-          },
-          {
-            id: '0002',
-            imgUrl: require('../../../assets/images/nav/n2.png'),
-            desc: '一日游'
-          },
-          {
-            id: '0003',
-            imgUrl: require('../../../assets/images/nav/n3.png'),
-            desc: '成都必游'
-          },
-          {
-            id: '0004',
-            imgUrl: require('../../../assets/images/nav/n4.png'),
-            desc: '川剧变脸'
-          },
-          {
-            id: '0005',
-            imgUrl: require('../../../assets/images/nav/n5.png'),
-            desc: '嗨国庆'
-          },
-          {
-            id: '0006',
-            imgUrl: require('../../../assets/images/nav/n6.png'),
-            desc: '稻城亚丁'
-          },
-          {
-            id: '0007',
-            imgUrl: require('../../../assets/images/nav/n7.png'),
-            desc: '游乐场'
-          },
-          {
-            id: '0008',
-            imgUrl: require('../../../assets/images/nav/n8.png'),
-            desc: '熊猫基地'
-          },
-          {
-            id: '0009',
-            imgUrl: require('../../../assets/images/nav/n9.png'),
-            desc: '动植物园'
-          },
-          {
-            id: '0010',
-            imgUrl: require('../../../assets/images/nav/n10.png'),
-            desc: '都江堰'
-          }
-        ]
+        swiperOption: {
+          autoplay: false
+        }
       }
     },
     computed: {
