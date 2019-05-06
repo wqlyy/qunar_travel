@@ -94,6 +94,7 @@
   @import "../../../assets/styles/mixin";
 
   .icons {
+    margin-top: .1rem;
     /deep/ .swiper-container {
       height: 0;
       padding-bottom: 50%;
