@@ -59,7 +59,6 @@
         this.lastCity = this.city
         this.getHomeInfo()
       }
-      console.log('activated')
     }
   }
 </script>
