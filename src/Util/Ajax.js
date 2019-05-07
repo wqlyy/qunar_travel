@@ -2,7 +2,7 @@ import Axios from 'axios'
 
 // 创建axios实例
 const service = Axios.create({
-  baseURL: 'api', // api 的 base_url
+  baseURL: '/api', // api 的 base_url
   timeout: 0 // 请求超时时间
 })
 // 添加请求拦截器

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <detail-banner/>
+    <detail-banner :sightName="sightName" :bannerImg="bannerImg" :bannerImgs="gallaryImgs"/>
     <detail-header/>
     <div class="content">
       <detail-list :list="list"/>
@@ -12,9 +12,10 @@
   import DetailBanner from './components/Banner'
   import DetailHeader from './components/Header'
   import DetailList from './components/List'
+  import Ajax from '../../Util/Ajax'
 
   export default {
-    name: "index",
+    name: "Detail",
     components: {
       DetailBanner,
       DetailHeader,
@@ -22,27 +23,33 @@
     },
     data() {
       return {
-        list: [{
-          "title": "成人票",
-          "children": [{
-            "title": "成人三馆联票",
-            "children": [{
-              "title": "成人三馆联票 - 某一连锁店销售"
-            }]
-          }, {
-            "title": "成人五馆联票"
-          }]
-        }, {
-          "title": "学生票"
-        }, {
-          "title": "儿童票"
-        }, {
-          "title": "特惠票"
-        }]
+        lastId: '',
+        sightName: '',
+        bannerImg: '',
+        list: [],
+        gallaryImgs: []
       }
     },
     mounted() {
-      console.log(this.$route.params.id)
+      // this.getDetailInfo()
+    },
+    methods: {
+      getDetailInfo() {
+        let id = this.$route.params.id
+        Ajax.get('/detail', {
+          params: {id}
+        }).then(this.handleGetDataSucc)
+      },
+      handleGetDataSucc(res) {
+        this.sightName = res.sightName
+        this.bannerImg = res.bannerImg
+        this.list = res.categoryList
+        this.gallaryImgs = res.gallaryImgs
+        console.log(res)
+      }
+    },
+    activated() {
+      this.getDetailInfo()
     }
   }
 </script>

@@ -1,13 +1,13 @@
 <template>
   <div>
     <div class="banner" @click="handleBannerClick">
-      <img src="//img1.qunarzz.com/sight/p0/1612/1d/1d9a740c1f9e0efaa3.img.jpg_600x330_3b0fdac5.jpg" alt="">
+      <img :src="bannerImg" alt="">
       <div class="banner-info">
-        <div class="banner-info-title">国色天乡·陆地乐园</div>
+        <div class="banner-info-title">{{sightName}}</div>
         <div class="banner-info-number"><i class="iconfont">&#xe692;</i>43</div>
       </div>
     </div>
-    <gallary :imgs="imgs" v-show="showGallary" @close="handleGallaryClose"/>
+    <gallary :imgs="bannerImgs" v-show="showGallary" @close="handleGallaryClose"/>
   </div>
 </template>
 
@@ -18,10 +18,14 @@
     components: {
       Gallary
     },
+    props: {
+      sightName: String,
+      bannerImg: String,
+      bannerImgs: Array
+    },
     data() {
       return {
-        showGallary: false,
-        imgs: ["http://img1.qunarzz.com/sight/p0/201404/23/04b92c99462687fa1ba45c1b5ba4ad77.jpg_800x800_70debc93.jpg", "http://img1.qunarzz.com/sight/p0/1709/76/7691528bc7d7ad3ca3.img.png_800x800_9ef05ee7.png"]
+        showGallary: false
       }
     },
     methods: {
