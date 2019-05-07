@@ -9,7 +9,7 @@
       v-show="keyword"
     >
       <ul>
-        <li class="search-item border-bottom" v-for="item of list" :key="item.id">{{item.name}}</li>
+        <li class="search-item border-bottom" @click="handleCityClick(item.name)" v-for="item of list" :key="item.id">{{item.name}}</li>
         <li class="search-item border-bottom no-result" v-show="hasNoData">
           没有找到匹配数据
         </li>
@@ -60,6 +60,12 @@
           }
           this.list = result
         }, 100)
+      }
+    },
+    methods: {
+      handleCityClick(city) {
+        this.$store.commit('changeCity', city)
+        this.$router.push('/')
       }
     }
   }

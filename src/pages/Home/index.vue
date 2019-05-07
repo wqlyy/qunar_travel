@@ -1,6 +1,6 @@
 <template>
   <div>
-    <home-header :city="city"/>
+    <home-header/>
     <home-swiper :swiperList="swiperList"/>
     <home-icons :iconList="iconList"/>
     <home-recommend :recommendList="recommendList"/>
@@ -27,7 +27,6 @@
     },
     data() {
       return {
-        city: '',
         swiperList: [],
         iconList: [],
         recommendList: [],
@@ -42,7 +41,6 @@
         Ajax.get('/home').then(this.getHomeInfoSucc)
       },
       getHomeInfoSucc(res) {
-        this.city = res.city.length > 3 ? res.city.slice(0, 3) : res.city
         this.swiperList = res.swiperList
         this.iconList = res.iconList
         this.recommendList = res.recommendList
