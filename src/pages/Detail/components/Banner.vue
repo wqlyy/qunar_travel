@@ -7,16 +7,20 @@
         <div class="banner-info-number"><i class="iconfont">&#xe692;</i>43</div>
       </div>
     </div>
-    <gallary :imgs="bannerImgs" v-show="showGallary" @close="handleGallaryClose"/>
+    <fade-animation>
+      <gallary :imgs="bannerImgs" v-show="showGallary" @close="handleGallaryClose"/>
+    </fade-animation>
   </div>
 </template>
 
 <script>
   import Gallary from '../../../components/Gallary'
+  import FadeAnimation from '../../../components/FadeAnimation'
   export default {
     name: "banner",
     components: {
-      Gallary
+      Gallary,
+      FadeAnimation
     },
     props: {
       sightName: String,
