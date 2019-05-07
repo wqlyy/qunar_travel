@@ -15,6 +15,7 @@
   import HomeRecommend from './components/Recommend'
   import HomeWeekend from './components/Weekend'
   import Ajax from '../../Util/Ajax'
+  import {mapState} from 'vuex'
 
   export default {
     name: "index",
@@ -27,18 +28,23 @@
     },
     data() {
       return {
+        lastCity: '',
         swiperList: [],
         iconList: [],
         recommendList: [],
         weekendList: []
       }
     },
+    computed: {
+      ...mapState(['city'])
+    },
     mounted() {
+      this.lastCity = this.city
       this.getHomeInfo()
     },
     methods: {
       getHomeInfo() {
-        Ajax.get('/home').then(this.getHomeInfoSucc)
+        Ajax.get('/home?city=' + this.city).then(this.getHomeInfoSucc)
       },
       getHomeInfoSucc(res) {
         this.swiperList = res.swiperList
@@ -47,6 +53,13 @@
         this.weekendList = res.weekendList
         console.log(res)
       }
+    },
+    activated() {
+      if (this.lastCity !== this.city) {
+        this.lastCity = this.city
+        this.getHomeInfo()
+      }
+      console.log('activated')
     }
   }
 </script>
