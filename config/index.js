@@ -15,13 +15,13 @@ module.exports = {
         target:' https://www.easy-mock.com',
         changeOrigin:true,
         pathRewrite:{
-          '^/api':'/mock/5ccfc56dcc66726b34b82672/api'
+          '^/api':'/mock/5ccfc56dcc66726b34b82672'
         }
       }
     },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host: '0.0.0.0', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

@@ -36,7 +36,7 @@
     methods: {
       getDetailInfo() {
         let id = this.$route.params.id
-        Ajax.get('/detail', {
+        Ajax.get('/info', {
           params: {id}
         }).then(this.handleGetDataSucc)
       },
